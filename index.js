@@ -3,13 +3,13 @@ const bodyParser=require('body-parser')
 
 
 const app=express();
-
+app.use(bodyParser.json())
 require("./mongodb-connection")
 const userRouter=require('./routers/user')
 const movieRouter=require('./routers/movie')
 app.use('/user',userRouter);
 app.use('/movie',movieRouter);
-app.use(bodyParser.json())
+
 
 app.get('/',(req,res)=>{
     res.sendFile(__dirname+'/index.html')
