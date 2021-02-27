@@ -51,8 +51,13 @@ const MovieSchema=new mongoose.Schema({
       character:{
           type:String,
           required:true
-      }
+      },
   }],
+  Author:{
+      ref:'User',
+      type:mongoose.SchemaTypes.ObjectId,
+      
+  },
 
 
      })

@@ -17,10 +17,23 @@ const UserSchema = new mongoose.Schema({
         type:String,
         required:true,
         minlength:8
-    }
- 
+    },
+   isAuthor:{
+       type:Boolean,
+       required:true,
+       default:false,
+   },
+   movies:[
+    { 
+        type:mongoose.SchemaTypes.ObjectId,
+        ref:'Movie',
+        
 
-})
+    }
+   ],
+   favorite:[]
+   }
+)
 
 const UserModel = mongoose.model('User',UserSchema)
 
