@@ -13,4 +13,7 @@ async delete(itemId){
 async find(itemId){
     return this.model.findById(itemId)
 }
+async findByUsername({item}){
+    return this.model.findOne({item})
+}
 }

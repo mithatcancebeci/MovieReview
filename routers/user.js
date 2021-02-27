@@ -14,16 +14,35 @@ router.post('/', async (req, res,next) => {
 
 router.post('/signup',async(req,res,next)=>{
  try {
- const {username,displayName,password}=req.body
- const user=await UserService.add(req.body)
- await user.save();
+ const {username,displayName,password,isAuthor}=req.body
+ const hashedPassword = await UserService.hashPassword(password);
+ const user=await UserService.add({username,displayName,password:hashedPassword,isAuthor})
+
+
 res.json({
   data:user,
   message:'You Have SignUp Succesfully'
 })
-
  } catch (e) {
  next(e);
  }
+
 })
+
+
+router.post('/login',async(req,res,next)=>{
+  try {
+  const {username,password}=req.body;
+  const user =await UserService.findByUsername({username})
+  if(!user) return next(new Error('username is not found'))
+ const validPassword=await  UserService.validatePassword(password,user.password)
+if(!validPassword) return next(new Error('Password is not correct'))
+
+
+  } catch (e) {
+  next(e)
+  }
+
+})
+
 module.exports=router;
