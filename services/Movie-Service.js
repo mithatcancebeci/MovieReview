@@ -1,10 +1,12 @@
-const BaseService=require('./BaseService')
+
 const MovieModel=require('../models/movie')
 
-class MovieService extends BaseService {
-    model=MovieModel
+exports.getMovies=async(req,res,next)=>{
+    const movies=await MovieModel.find();
+    res.send(movies);
+}
 
   
-}
-module.exports=new MovieService()
+
+
     
