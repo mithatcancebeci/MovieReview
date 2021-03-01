@@ -8,7 +8,7 @@ router.post('/signup',AuthService.signup)
 router.post('/login',AuthService.login)
 
 router.post('/createComment',CommentService.createComment)
-router.get('/getComments',CommentService.getComments)
+
 // router.get('/getUserofComments',UserService.getUserofComments)
 
 module.exports=router;
