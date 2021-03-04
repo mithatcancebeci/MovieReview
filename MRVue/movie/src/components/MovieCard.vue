@@ -18,29 +18,10 @@
 </div></div>
 </template>
 <script>
-import axios from 'axios'
+
 export default {
-    data(){
-        return{
-            movies:[],
-            
-      
-        }
-    },
+     props:['movies']
     
-        created(){
-          
-           axios.get('https://api.themoviedb.org/3/movie/popular?api_key=63c20ab0688ef19ee1cdf0eacf135738&page=2')
-           .then((res)=>{
-               for( var i=0 ;i<=4;i++){
-                 
-                   this.movies.push(res.data.results[i])
-                
-               }
-            //  this.movies=res.data
-               
-           })
-        }
     }
 
 

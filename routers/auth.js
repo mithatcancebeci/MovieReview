@@ -7,6 +7,8 @@ router.post('/signup',AuthService.signup)
 
 router.post('/login',AuthService.login)
 
+
+
 router.post('/createComment',CommentService.createComment)
 
 // router.get('/getUserofComments',UserService.getUserofComments)
