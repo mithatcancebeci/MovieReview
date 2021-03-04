@@ -45,11 +45,11 @@ exports.login=async(req,res,next)=>{
   }
   else{
    const user = await UserModel.findOne({username});
-   if (!user) return next(new Error('Email does not exist'));
+   if (!user) return next(new Error('Username does not exist'));
    const validPassword=await validatePassword(password,user.password)
    if (!validPassword) return next(new Error('Password is not correct'))
    const accessToken = jwt.sign({ userId: user._id }, 'my-secret-app', {
-    expiresIn: "1d"
+    expiresIn: "1y"
   });
   await UserModel.findByIdAndUpdate(user._id, { accessToken })
   res.status(200).json({
