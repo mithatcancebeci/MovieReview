@@ -2,10 +2,10 @@
 <div class="movies" >
     <div class="row row-cols-1 row-cols-md-6 g-4" >
   <div class="col" :key="movie.id" v-for="movie in movies" >
-    <div class="card h-100" > 
+  <div class="card h-100" > 
 
       <div class="card-body" >
-        <img :src="'https://image.tmdb.org/t/p/w300'+movie.poster_path" :alt="movie.poster_path">
+  <router-link :to="'/movie/'+movie.id"><img :src="'https://image.tmdb.org/t/p/w300'+movie.poster_path" :alt="movie.poster_path"></router-link>
         <h5 class="card-title">{{movie.title}}</h5>
         <p class="card-text">{{movie.overview}}</p>
       </div>
@@ -13,6 +13,8 @@
         <small class="text-muted">{{movie.release_date}}</small>
       </div>
     </div>
+
+
   </div>
   
 </div></div>
@@ -49,9 +51,9 @@ h5{
   background-color:#fff;
 box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
 border-radius:15px;
-  cursor: pointer;
+  
   transition: 0.4s;
-  transform: scale(0.8,0.8);
+  transform: scale(0.89,0.89);
   
 }
 
@@ -63,7 +65,7 @@ border-radius:15px;
 
 .card:hover {
   z-index: 1;
-  transform: scale(1 ,1);
+  transform: scale(0.99,0.99);
 border-radius: 10px;
 border: 1px solid rgba( 255, 255, 255, 0.18 );
 background: rgba( 255, 255, 255, 0.25 );

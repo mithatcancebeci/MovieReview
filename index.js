@@ -26,6 +26,11 @@ app.use('/',authRouter)
 //      await MovieModel.create(movies[0])  
 //  }
 // addMovies()
+// const movies=()=>{
+//     const movie=axios.get('https://api.themoviedb.org/3/movie/527774?api_key=63c20ab0688ef19ee1cdf0eacf135738&language=en-US').then((res)=>{console.log(res.data)})
+//     console.log(movie)
+// }
+// movies()
 app.get('/',(req,res)=>{
     res.sendFile(__dirname+'/index.html')
 })
