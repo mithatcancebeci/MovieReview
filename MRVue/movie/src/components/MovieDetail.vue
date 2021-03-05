@@ -42,7 +42,7 @@
             <div class="revenue">
               <p><Revenue /></p>
               <p><Equals /></p>
-              <strong style="color:#85bb65">${{ movieDetails.revenue }}</strong>
+              <strong  v-if="!movieDetails.revenue==0" style="color:#85bb65">${{ movieDetails.revenue }}</strong>
             </div>
             <div class="cast">
               <p><Cast /></p>
