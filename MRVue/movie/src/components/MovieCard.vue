@@ -5,7 +5,7 @@
   <div class="card h-100" > 
 
       <div class="card-body" >
-  <router-link :to="'/movie/'+movie.id"><img :src="'https://image.tmdb.org/t/p/w300'+movie.poster_path" :alt="movie.poster_path"></router-link>
+  <router-link :to="'/movie/'+movie.id" ><img :src="'https://image.tmdb.org/t/p/w300'+movie.poster_path" :alt="movie.poster_path"></router-link>
         <h5 class="card-title">{{movie.title}}</h5>
         <p class="card-text">{{movie.overview}}</p>
       </div>

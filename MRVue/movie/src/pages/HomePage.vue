@@ -32,7 +32,7 @@ TopBar,MovieCard
                    this.movies.push(res.data[0][i])
                    this.movies2.push(res.data[0][i+5])
                    this.movies3.push(res.data[0][i+10])
-                       this.movies4.push(res.data[0][i+15])
+                   this.movies4.push(res.data[0][i+15])
 
                }                  
                 
