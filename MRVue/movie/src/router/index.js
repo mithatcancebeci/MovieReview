@@ -4,6 +4,7 @@ import SignUpPage from '../pages/SignUpPage'
 import LoginPage from '../pages/LoginPage'
 import HomePage from '../pages/HomePage'
 import Movie from '../pages/Movie'
+
 Vue.use(Router)
 
 export default new Router({
@@ -25,10 +26,10 @@ export default new Router({
  },
  {
    path:'/movie/:id',
-   name:Movie,
+   name:'Movie',
    component:Movie
- }
-     
+},
+    
   ]
  ,
   mode:'history'
