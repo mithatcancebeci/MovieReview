@@ -1,5 +1,5 @@
 <template>
-  <div>
+ 
     <svg
       width="176"
       height="40"
@@ -121,7 +121,7 @@
         fill="#454B53"
       />
     </svg>
-  </div>
+
 </template>
 <script>
 export default {
@@ -134,7 +134,5 @@ export default {
 div{
   margin-top: 5px;
 }
-path {
-  fill: crimson;
-}
+
 </style>

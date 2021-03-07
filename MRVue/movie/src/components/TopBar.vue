@@ -2,7 +2,7 @@
   <div class="glass">
     <nav class="navbar ">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"><logo></logo></a>
+        <a class="navbar-brand" href="#"><Logo></Logo></a>
         <a class="navbar-brand" href="#">Home</a>
         <a class="navbar-brand" href="#">Movies</a>
         <a class="navbar-brand" href="#">Log In</a>
@@ -12,14 +12,14 @@
   </div>
 </template>
 <script>
-import logo from "./icons/logo";
+import Logo from "./icons/Logo";
 export default {
   data() {
     return {
     
     };
   },
-  components: { logo }
+  components: { Logo }
 };
 </script>
 <style >

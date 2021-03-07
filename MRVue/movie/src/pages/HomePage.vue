@@ -28,3 +28,6 @@ computed: {
 }
     
 </script>
+<style>
+
+</style>
