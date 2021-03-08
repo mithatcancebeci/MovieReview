@@ -50,7 +50,7 @@ export default {
 </script>
 <template>
   <div>
-    <TopBar />
+   
     <MovieDetail
       :movieDetails="movieDetails"
       :movieVideos="movieVideos"

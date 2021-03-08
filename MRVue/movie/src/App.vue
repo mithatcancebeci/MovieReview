@@ -1,22 +1,26 @@
 <template>
   <div id="app">
+    <TopBar @event.prevent   v-if="ifShow" />
 <router-view/>
 </div>
 </template>
 
 <script>
 import TopBar from './components/TopBar'
-import MovieCard from './components/MovieCard';
+
 export default {
   name: 'App',
-  components:{TopBar,MovieCard},
+  components:{TopBar},
   data(){
     return{
-      movies:[]
+      ifShow:true
     }
   },
   created(){
+    if(this.$route.path=="/signup" || this.$route.path=="/login"){
 
+   this.ifShow=false
+    }
   }
 
 }

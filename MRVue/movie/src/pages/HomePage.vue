@@ -1,6 +1,5 @@
 <template>
 <div>
-<TopBar/>
 <MovieCard  v-for="group in groupedMovies" :key="group.id " :movies=group />
 </div>
 
@@ -28,6 +27,3 @@ computed: {
 }
     
 </script>
-<style>
-
-</style>

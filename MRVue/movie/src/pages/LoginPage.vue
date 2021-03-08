@@ -4,7 +4,7 @@
     <div class="card">
       <h5 class="card-title"><LoginLogo /></h5>
       <div class="card-body">
-        <form class="form-group" @submit.prevent>
+        <form class="form-group">
           <div class="row">
             <input
               type="text"

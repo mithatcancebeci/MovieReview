@@ -1,5 +1,5 @@
 <template>
- 
+ <div>
     <svg
       width="176"
       height="40"
@@ -121,18 +121,22 @@
         fill="#454B53"
       />
     </svg>
-
+</div>
 </template>
-<script>
-export default {
-  data() {
-    return {};
-  }
-};
-</script>
+
 <style scoped>
 div{
-  margin-top: 5px;
+  margin-top:4px;
+  padding:5px;
 }
+div:hover>svg>path{
 
+  fill:white;
+  
+  
+}
+div:hover{
+  padding:5px;
+  background-color: #f42f42;
+}
 </style>
