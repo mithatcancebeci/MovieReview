@@ -5,7 +5,7 @@
          template #button-content>   <strong>{{currentUser.data.username}}</strong>
           </template>
           <b-dropdown-item  href="/profile"><span>Profile</span></b-dropdown-item>
-          <b-dropdown-item href="#"><span>Log Out</span>  </b-dropdown-item>
+          <b-dropdown-item @click="logOut" href="#"><span >Log Out</span>  </b-dropdown-item>
         </b-nav-item-dropdown>
 </template>
 <script>
@@ -14,7 +14,23 @@ export default {
     props:['currentUser'],
     components:{
         LogOut
+    },computed: {
+    loggedIn() {
+      return this.$store.state.accounts.initialState.status.loggedIn;
     }
+  },
+created(){
+     if (!this.loggedIn) {
+      this.$route.push("/login")
+    
+    }
+},
+  methods: {
+       logOut(){
+           this.$store.dispatch('logout')
+        
+    }
+  }
 }
 </script>
 <style scoped>

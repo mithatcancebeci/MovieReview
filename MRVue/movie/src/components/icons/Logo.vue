@@ -128,6 +128,7 @@
 div{
   margin-top:4px;
   padding:5px;
+  border-radius:5px;
 }
 div:hover>svg>path{
 
@@ -136,7 +137,8 @@ div:hover>svg>path{
   
 }
 div:hover{
-  padding:5px;
+
   background-color: #f42f42;
+
 }
 </style>

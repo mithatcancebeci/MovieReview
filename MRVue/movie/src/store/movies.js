@@ -3,17 +3,30 @@ import MovieService from '../Services/MovieService'
 const state={
 movies:[],
 grouped:[],
-similarMovies:[]
+similarMovies:[],
+movieDetails:{},
+movieCredits:[],
 }
 const actions={
-    getMovies(context) {
+    getMovies({commit}) {
         return MovieService.getMovies().then((res) => {
-          context.commit('setMovies', res.data[0]);
+          commit('setMovies', res.data[0]);
         });
       },
-      getSimilarMovies(context,id){
+      getSimilarMovies({commit},id){
         return MovieService.getSimilarMovies(id).then((res)=>{
-          context.commit("setSimilarMovies",{id,similarMovies:res.data.results[0]})
+          commit("setSimilarMovies",{id,similarMovies:res.data.results})
+        })
+      },
+      getMovieCredits({commit},id){
+        return MovieService.getMovieCredits(id).then((res)=>{
+          commit("setMovieCredits",{id,movieCredits:res.data.cast})
+        })
+      }
+      ,
+      getMovieDetails({commit},id){
+        return MovieService.getMovieDetails(id).then((res)=>{
+          commit('setMovieDetails',{id,movieDetails:res.data})
         })
       }
 }
@@ -32,17 +45,29 @@ const getters = {
     },
     groupedSimilarMovies(state) {
       const grouped = [];
-  
-      state.similarMovies.map((item, index) => {
-        if (index % 5 === 0) {
-          grouped.push([]);
-        }
-        grouped[grouped.length - 1].push(item);
-      });
+      for(var i=0;i<state.similarMovies.length;i++){
+        grouped.push(state.similarMovies[i]) 
+        if(i===4){
+           break;
+         }
+       }
+    
+      
   
       return grouped;
     },
-    
+    groupedMovieCast(state) {
+      const grouped = [];
+  
+     for(var i=0;i<state.movieCredits.length;i++){
+      grouped.push(state.movieCredits[i]) 
+      if(i===4){
+         break;
+       }
+     }
+  
+      return grouped;
+    }
   };
   
 const mutations={
@@ -51,8 +76,16 @@ const mutations={
         state.movies = movies;
       },
   setSimilarMovies(state,data){
-    const {id,similarMovies} = data
-    state.similarMovies[id]=similarMovies
+    const {similarMovies} = data
+    state.similarMovies=similarMovies
+  },
+  setMovieCredits(state,data){
+    const {movieCredits}=data
+    state.movieCredits=movieCredits
+  },
+  setMovieDetails(state,data){
+    const{movieDetails}=data
+    state.movieDetails=movieDetails
   }
 }
 export const movies = {

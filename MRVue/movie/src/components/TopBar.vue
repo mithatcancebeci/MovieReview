@@ -1,7 +1,7 @@
 <template>
  <div>
   <b-navbar toggleable="lg" type="dark" >
-    <b-navbar-brand href="#"><Logo /></b-navbar-brand>
+    <Logo />
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -11,8 +11,10 @@
       <b-navbar-nav class="ml-auto">
        
   <b-navbar-nav>
-        <router-link to="/">Home</router-link>
-         <UserCard :currentUser=currentUser />
+        <router-link v-if="!ifShow" to="/">Home</router-link>
+         <UserCard  :currentUser=currentUser />
+         <router-link v-if="ifShow" to="/signup">Sign Up</router-link>
+           <router-link v-if="ifShow" to="/login">Log In</router-link>
       </b-navbar-nav>
 
 
