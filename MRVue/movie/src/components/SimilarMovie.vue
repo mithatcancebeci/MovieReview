@@ -50,6 +50,7 @@ h5{
 
   width: 340px;
   height: 300px;
+  margin-left:60px;
   background-color:#fff;
 box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
 border-radius:15px;

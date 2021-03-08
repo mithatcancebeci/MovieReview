@@ -8,24 +8,24 @@ movieDetails:{},
 movieCredits:[],
 }
 const actions={
-    getMovies({commit}) {
-        return MovieService.getMovies().then((res) => {
+    async getMovies({commit}) {
+        return  await MovieService.getMovies().then((res) => {
           commit('setMovies', res.data[0]);
         });
       },
-      getSimilarMovies({commit},id){
-        return MovieService.getSimilarMovies(id).then((res)=>{
+     async getSimilarMovies({commit},id){
+        return  await MovieService.getSimilarMovies(id).then((res)=>{
           commit("setSimilarMovies",{id,similarMovies:res.data.results})
         })
       },
-      getMovieCredits({commit},id){
-        return MovieService.getMovieCredits(id).then((res)=>{
+     async getMovieCredits({commit},id){
+        return await MovieService.getMovieCredits(id).then((res)=>{
           commit("setMovieCredits",{id,movieCredits:res.data.cast})
         })
       }
       ,
-      getMovieDetails({commit},id){
-        return MovieService.getMovieDetails(id).then((res)=>{
+     async getMovieDetails({commit},id){
+        return await  MovieService.getMovieDetails(id).then((res)=>{
           commit('setMovieDetails',{id,movieDetails:res.data})
         })
       }

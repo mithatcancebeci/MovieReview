@@ -68,7 +68,7 @@ computed: {
    
     <MovieDetail
       :movieDetails="movieDetails"
-      :movieVideos="movieVideos"
+    
       :movieCredits="groupedMovieCast"
    />
    <CommentView />

@@ -21,7 +21,7 @@
               >
             </div>
             <div v-if="trailer" class="Trailer">
-              <iframe
+              <!-- <iframe
                 width="500"
                 height="315"
                 :src="
@@ -30,7 +30,7 @@
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
-              ></iframe>
+              ></iframe> -->
             </div>
             <div class="category">
               <p><strong>Genres </strong></p>
@@ -98,7 +98,7 @@ export default {
       this.trailer = !this.trailer;
     }
   },
-  props: ["movieDetails", "movieVideos", "movieCredits"],
+  props: ["movieDetails", "movieCredits"],
   components: { PlayIcon, Revenue, Equals, Cast }
 };
 </script>

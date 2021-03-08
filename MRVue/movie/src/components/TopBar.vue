@@ -12,7 +12,7 @@
        
   <b-navbar-nav>
         <router-link v-if="!ifShow" to="/">Home</router-link>
-         <UserCard  :currentUser=currentUser />
+         <UserCard  v-if="!ifShow" :currentUser=currentUser />
          <router-link v-if="ifShow" to="/signup">Sign Up</router-link>
            <router-link v-if="ifShow" to="/login">Log In</router-link>
       </b-navbar-nav>

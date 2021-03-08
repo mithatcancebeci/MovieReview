@@ -19,12 +19,12 @@ export default {
       return this.$store.state.accounts.initialState.status.loggedIn;
     }
   },
-created(){
-     if (!this.loggedIn) {
-      this.$route.push("/login")
+// created(){
+//      if (!this.loggedIn) {
+//       this.$route.push("/login")
     
-    }
-},
+//     }
+// },
   methods: {
        logOut(){
            this.$store.dispatch('logout')

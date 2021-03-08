@@ -3,14 +3,13 @@
 <div class="card mb-3" style="max-width: 1770px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="#" alt="#">
-    //CommentFeed
+     
+      <CommentSubmit />
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">Your Reply</h5>
-        <p class="card-text"><input type="text" v-model="comment"></p>
-        <p class="card-text"><small class="text-muted"><button @click="postComment"></button></small></p>
+       //comment Feed
+     
       </div>
     </div>
   </div>
@@ -19,17 +18,26 @@
 </template>
 <script>
 import axios from 'axios'
+import CommentSubmit from './CommentSubmit'
 export default {
  data(){
    return{
          comment:''
    }
  },
+ components:{CommentSubmit},
  methods:{
-   postComment(){
-     return axios.post('http://localhost:3000/comments/createComment',{comment:this.comment})
+  
    }
- }
+ 
 
 }
 </script>
+<style scoped>
+.card{
+  margin-top:15px;
+  border:none;
+  background-color: whitesmoke;
+  border-radius:15px;
+}
+</style>
