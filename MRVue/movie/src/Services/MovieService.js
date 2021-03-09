@@ -16,7 +16,13 @@ getSimilarMovies(id){
     getMovieDetails(id){
       return axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=63c20ab0688ef19ee1cdf0eacf135738&language=en-US`)
     
-    }
+    },
+    getMovieVideos(id){
+      return axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=63c20ab0688ef19ee1cdf0eacf135738&language=en-US`)
+    },
+    // postCommentToMovie(id,body){
+    //   return  axios.post(`http://localhost:3000/movie/${id}`,body)
+    // }
   }
   
 

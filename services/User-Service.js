@@ -7,8 +7,14 @@ const CommentModel=require('../models/comments')
      } catch (e) {
      
      }
-        
+       
+
       }
+
+
+
+
+
       // exports.getUserofComments= async(req,res)=>{
       //   const user = await UserModel.findById({_id:'603bc9965690d91fc8c0933a'})
       //   const contentofComments = await CommentModel.findById({_id:user.comments[0]})

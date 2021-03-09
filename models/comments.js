@@ -8,7 +8,7 @@ const CommentSchema = new mongoose.Schema({
   },
   movie: {
     ref: "Movie",
-    type: mongoose.SchemaTypes.ObjectId,
+    type: mongoose.SchemaTypes.Number,
   },
   user: {
     ref: "User",

@@ -6,16 +6,47 @@
         <img src="../../assets/bg-01.jpg" alt="#" width="50" height="50" class="rounded-circle"> 
           </div>
     <div class="col">
-     <input type="text">
-      
+     <input type="text" v-model="comment">
+        <div v-for="reply in comments[0]" :key="reply.id">
+        {{reply.content}}
+    </div>
     </div>
  <div class="row">
-     <button>Comment</button>
+  
+     <button @click="postComment">Comment</button>
  </div>
     </div>
     </div>
     </div>
 </template>
+<script>
+import axios from 'axios'
+export default {
+    data(){
+        return{
+            comment:'',
+            comments:[]
+        }
+
+    },computed:{
+       currentUser(){
+    return JSON.parse( this.$store.state.accounts.initialState.user)
+       }
+
+   },
+   created(){
+    return axios.get(`http://localhost:3000/movie/${this.$route.params.id}`).then((res)=>{
+         this.comments.push(res.data)
+         console.log(this.comments)
+     })
+   },
+    methods:{
+         postComment(){
+        return  axios.post(`http://localhost:3000/movie/${this.$route.params.id}`,{comment:this.comment,user:this.currentUser.data.username})
+   }
+    }
+}
+</script>
 <style scoped>
 .card-body>.row{
     margin:5px;

@@ -21,16 +21,16 @@
               >
             </div>
             <div v-if="trailer" class="Trailer">
-              <!-- <iframe
+             <iframe
                 width="500"
                 height="315"
                 :src="
-                  'https://www.youtube.com/embed/' + movieVideos.results[0].key
+                  'https://www.youtube.com/embed/' + movieVideos
                 "
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
-              ></iframe> -->
+              ></iframe>
             </div>
             <div class="category">
               <p><strong>Genres </strong></p>
@@ -98,7 +98,7 @@ export default {
       this.trailer = !this.trailer;
     }
   },
-  props: ["movieDetails", "movieCredits"],
+  props: ["movieDetails",'movieVideos', "movieCredits"],
   components: { PlayIcon, Revenue, Equals, Cast }
 };
 </script>

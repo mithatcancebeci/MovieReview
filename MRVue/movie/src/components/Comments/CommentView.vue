@@ -20,16 +20,9 @@
 import axios from 'axios'
 import CommentSubmit from './CommentSubmit'
 export default {
- data(){
-   return{
-         comment:''
-   }
- },
+
  components:{CommentSubmit},
- methods:{
-  
-   }
- 
+
 
 }
 </script>
