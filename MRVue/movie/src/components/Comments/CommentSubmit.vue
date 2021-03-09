@@ -7,8 +7,9 @@
           </div>
     <div class="col">
      <input type="text" v-model="comment">
-        <div v-for="reply in comments[0]" :key="reply.id">
-        {{reply.content}}
+        <div v-for="reply in replies[0].content" :key="reply.id">
+            {{reply}}
+        
     </div>
     </div>
  <div class="row">
@@ -25,7 +26,7 @@ export default {
     data(){
         return{
             comment:'',
-            comments:[]
+            replies:[]
         }
 
     },computed:{
@@ -36,7 +37,7 @@ export default {
    },
    created(){
     return axios.get(`http://localhost:3000/movie/${this.$route.params.id}`).then((res)=>{
-         this.comments.push(res.data)
+         this.replies.push(res.data)
          console.log(this.comments)
      })
    },
