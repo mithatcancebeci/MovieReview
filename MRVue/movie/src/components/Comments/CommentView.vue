@@ -1,17 +1,31 @@
 <template>
-     <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="#" alt="#">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">{{this.reply.user.displayName}}@{{this.reply.user.username}}</h5>
-        <p class="card-text">{{this.reply.content}}</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
+<div class="view">
+    <form>
+      
+      <fieldset>
+        <div class="row">
+          <div class="col-sm-3 col-lg-2 hidden-xs">
+            <img
+              class="rounded-circle"
+              src="https://bootdey.com/img/Content/avatar/avatar1.png"
+              alt=""
+            />
+          </div>
+          <div class="form-group col-xs-12 col-sm-9 col-lg-10"> 
+            <p class="card-title"><strong>{{this.reply.user.displayName}}</strong>@<span style="color:smoke">{{this.reply.user.username}}</span></p>
+          
+         <p class="card-text">{{this.reply.content}}</p>
+         
+          </div>
+        </div>
+      </fieldset>
+    </form>
+
+       
+        
+      
+
+ 
   </div>
 
 </template>
@@ -20,3 +34,36 @@ export default {
   props:['reply']
 }
 </script>
+<style scoped>
+.view{
+  border:1px solid #edededed;
+  border-radius:15px;
+  margin:5px;
+}
+fieldset{
+  margin-top:20px;
+}
+.card-title>strong{
+  font-weight: 700;
+  color:#f42f42;
+  
+  
+}
+.card-title>span{
+  font-size:14px;
+  
+}
+
+img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+@media screen {
+  .profile {
+    min-width: 379px;
+  }
+}
+</style>
