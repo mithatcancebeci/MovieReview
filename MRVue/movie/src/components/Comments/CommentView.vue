@@ -1,36 +1,22 @@
 <template>
-    <div>
-<div class="card mb-3" style="max-width: 1770px;">
+     <div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-     
-      <CommentSubmit />
+      <img src="#" alt="#">
     </div>
     <div class="col-md-8">
       <div class="card-body">
-       //comment Feed
-     
+        <h5 class="card-title">{{this.reply.user.displayName}}@{{this.reply.user.username}}</h5>
+        <p class="card-text">{{this.reply.content}}</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>
     </div>
   </div>
-</div>
-    </div>
+  </div>
+
 </template>
 <script>
-import axios from 'axios'
-import CommentSubmit from './CommentSubmit'
 export default {
-
- components:{CommentSubmit},
-
-
+  props:['reply']
 }
 </script>
-<style scoped>
-.card{
-  margin-top:15px;
-  border:none;
-  background-color: whitesmoke;
-  border-radius:15px;
-}
-</style>

@@ -36,12 +36,11 @@ const actions = {
       commit("setMovieVideos", { id, movieVideos: res.data.results[0].key });
     });
   },
-  // async postCommentToMovie({commit},id,body){
-  //   return await MovieService.postCommentToMovie(id,body).then(
-  //     ()=>{
-  //       commit('postComment',{id,body});
-  //     }
-    // )
+async getCommentsOfMovie({commit},id){
+  return await MovieService.getCommentsOfMovie(id).then((res)=>{
+    commit('setCommentsOfMovie',{id,comments:res.data})
+  })
+}
   
 };
 const getters = {
@@ -88,6 +87,10 @@ const mutations = {
   //   const{id,body}=data
   //   state.comments=body.content
   //  },
+  setCommentsOfMovie(state,data){
+    const {comments}=data
+    state.comments=comments
+  },
   setMovies(state, movies) {
     state.movies = movies;
   },

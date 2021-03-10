@@ -34,18 +34,9 @@ exports.postCommentToMovie = async (req, res, next) => {
 };
 
 exports.getCommentsOfMovie = async (req, res, next) => {
-
-const comment=await CommentModel.find({ movie: req.params.id}).populate('user')
-const body={
-    username:[],
-    content:[],
-    displayName:[]
-}
-comment.map((item,index)=>{
-    body.username.push(item.user.username)
-    body.content.push(item.content)
-    body.displayName.push(item.user.displayName);
+await CommentModel.find({movie:req.params.id}).populate({path:"user",select:["username","displayName"]})
+.then((comment)=>{
+  res.json(comment)
 })
-console.log(body)
-res.json(body)
+
 }
