@@ -7,7 +7,7 @@
           <div class="col-sm-3 col-lg-2 hidden-xs">
             <img
               class="rounded-circle"
-              src="https://bootdey.com/img/Content/avatar/avatar1.png"
+               :src="'../../../../../public/images/' + this.reply.user.image"
               alt=""
             />
           </div>

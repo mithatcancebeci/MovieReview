@@ -1,5 +1,7 @@
 const UserModel = require("../models/user.js");
 const CommentModel = require("../models/comments");
+const base64Img = require('base64-img');
+
 
 exports.getUser = async (req, res) => {
   try {
@@ -31,13 +33,23 @@ exports.getUserOfComments = async (req, res) => {
   } catch (e) {
     console.log(e);
   }
-};
-// exports.uploadImage=async(req,res)=>{
-//  const user=await UserModel.findOne({username:req.params.username})
-//  const image={
-//     data:fs.readFileSync(path.join(_dirname+'/uploads/'+req.file.filename)),
-//     contentType:'image/png'
-//  }
-//  user.image=image;
-// await  user.save()
-// }
+}
+exports.uploadImage=async(req,res)=>{
+ const { image } = req.file;
+  base64Img.img(image, './server/public', Date.now(), async(err, filepath)=>{
+    const pathArr = filepath.split('/')
+    const fileName = pathArr[pathArr.length - 1];
+    const user=await UserModel.findOne({username:req.params.username})
+  
+  user.image=`http://127.0.0.1:3000/${fileName}`
+  await user.save();
+  console.log(user.image)
+
+  res.status(200).json({
+    success: true,
+    
+});
+});
+}
+
+

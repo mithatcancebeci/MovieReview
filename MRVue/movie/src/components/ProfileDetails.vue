@@ -13,16 +13,24 @@
                 <div class="member-card pt-2 pb-2">
                   <br /><br /><br /><br />
                   <div class="thumb-lg member-thumb mx-auto">
-                    <img
-                      src="https://bootdey.com/img/Content/avatar/avatar2.png"
-                      class="rounded-circle img-thumbnail"
-                      alt="profile-image"
-                    />
-                  </div>
-                  <div class="">
+                   
+        <input @change="handleImage" class="custom-input" type="file" accept="image/*"> <img style="" :src="image" alt="" />
+                  </div>              <div>
                     <h4>{{user.username}}</h4>
                       <h4>{{user.displayName}}</h4>
                         <h4>{{user.image}}</h4>
+
+</div>
+ <img :src="user.image" alt="" />
+
+                  <div class="">
+      
+
+
+
+
+                   <input type="file" @change="uploadFile"/>
+                    <button v-on:click="handleSubmit">Submit</button>
                     <p class="text-muted">
                       <span> </span><span></span>
                     </p>
@@ -107,9 +115,40 @@
  
 </template>
 <script>
+import axios from 'axios'
 export default {
   name:'ProfileDetail',
-  props:['user']
+  data(){
+      return {
+        image:'',
+      remoteUrl:''
+      }
+    },
+
+  props:['user'],
+  methods:{
+   
+    handleImage(e) {
+      const selectedImage = e.target.files[0]; // get first file
+      this.createBase64Image(selectedImage);
+    },
+    createBase64Image(fileObject) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.image = e.target.result;
+        this.uploadImage();
+      };
+      reader.readAsDataURL(fileObject);
+    },
+    uploadImage(){
+      const {image}=this
+      
+      axios.post(`http://localhost:3000/user/${this.$route.params.username}`,{image})
+    }
+
+    
+  }
+ 
 };
 </script>
 <style scoped>

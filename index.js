@@ -2,8 +2,9 @@ const express=require('express')
 const bodyParser=require('body-parser')
 const axios=require('axios')
 const MovieModel=require('./models/movie')
-
+const path=require('path')
 const cors=require('cors')
+
 const app=express();
 
 app.use(cors());
@@ -38,9 +39,8 @@ app.use('/comments',commentRouter)
 //     console.log(movie)
 // }
 // movies()
-app.get('/',(req,res)=>{
-    res.sendFile(__dirname+'/index.html')
-})
+app.use("/images", express.static(path.join("backend/images")));
+
 app.listen('3000',function(){
     console.log('listening')
 })

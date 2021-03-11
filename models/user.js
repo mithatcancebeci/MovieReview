@@ -23,8 +23,7 @@ const UserSchema = new mongoose.Schema({
     default: false,
   },
   image:{
-    data:Buffer,
-    contentType:String,
+    type:String,
   },
   movies: [
     {
