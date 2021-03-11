@@ -4,7 +4,7 @@
           <template
          template #button-content>   <strong>{{currentUser.data.username}}</strong>
           </template>
-          <b-dropdown-item  href="/profile"><span>Profile</span></b-dropdown-item>
+          <b-dropdown-item  :to="/user/+currentUser.data.username" ><span>Profile</span></b-dropdown-item>
           <b-dropdown-item @click="logOut" href="/"><span >Log Out</span>  </b-dropdown-item>
         </b-nav-item-dropdown>
 </template>

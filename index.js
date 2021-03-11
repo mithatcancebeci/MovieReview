@@ -5,13 +5,17 @@ const MovieModel=require('./models/movie')
 
 const cors=require('cors')
 const app=express();
+
 app.use(cors());
+app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
+
 require("./mongodb-connection")
 const userRouter=require('./routers/user')
 const movieRouter=require('./routers/movie')
 const authRouter=require('./routers/auth')
 const commentRouter=require('./routers/comment')
+
 app.use('/user',userRouter);
 app.use('/movie',movieRouter);
 app.use('/',authRouter)

@@ -21,6 +21,10 @@ const UserSchema = new mongoose.Schema({
     required: true,
     default: false,
   },
+  image:{
+    data:Buffer,
+    contentType:String,
+  },
   movies: [
     {
       type: mongoose.SchemaTypes.ObjectId,

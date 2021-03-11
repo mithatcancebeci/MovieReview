@@ -18,6 +18,10 @@ const MovieSchema = new mongoose.Schema({
     ref: "User",
     type: mongoose.SchemaTypes.ObjectId,
   },
+  image:{
+    data:Buffer,
+    contentType:String
+  },
   comments: [
     {
       ref: "Comments",
