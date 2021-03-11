@@ -34,8 +34,9 @@ exports.postCommentToMovie = async (req, res, next) => {
 };
 
 exports.getCommentsOfMovie = async (req, res, next) => {
-await CommentModel.find({movie:req.params.id}).populate({path:"user",select:["username","displayName"]})
+await CommentModel.find({movie:req.params.id}).limit( 5 ).populate({path:"user",select:["username","displayName","image"]})
 .then((comment)=>{
+
   res.json(comment)
 })
 
