@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <div>
-     
       <div class="content">
         <div class="container">
           <div class="row">
@@ -13,27 +12,36 @@
                 <div class="member-card pt-2 pb-2">
                   <br /><br /><br /><br />
                   <div class="thumb-lg member-thumb mx-auto">
+                  <div class="file">
+   <form @submit.prevent="onSubmit" enctype="multipart/form-data">
+      <div class="fields">
+        <label>Upload File</label><br/>
+        <input 
+          type="file"
+          ref="file"
+          @change="onSelect"
+        />
+      </div>
+      <div class="fields">
+        <button>Submit</button>
+      </div>
+      <div class="message">
+        <h5>{{message}}</h5>
+      </div>
+   </form>
+  </div>
+                  </div>
+                  <div>
+                    
+                    <ProfileImageWithDefault :profileImage=user.image />
+                    <h4>{{ user.username }}</h4>
+                    <h4>{{ user.displayName }}</h4>
                    
-        <input @change="handleImage" class="custom-input" type="file" accept="image/*"> <img style="" :src="image" alt="" />
-                  </div>              <div>
-                    <h4>{{user.username}}</h4>
-                      <h4>{{user.displayName}}</h4>
-                        <h4>{{user.image}}</h4>
 
-</div>
- <img :src="user.image" alt="" />
+                  </div>
 
                   <div class="">
-      
-
-
-
-
-                   <input type="file" @change="uploadFile"/>
-                    <button v-on:click="handleSubmit">Submit</button>
-                    <p class="text-muted">
-                      <span> </span><span></span>
-                    </p>
+                    <p class="text-muted"><span> </span><span></span></p>
                   </div>
                   <ul class="social-links list-inline">
                     <li class="list-inline-item">
@@ -44,7 +52,7 @@
                         class="tooltips"
                         href=""
                         data-original-title="Facebook"
-                        >
+                      >
                       </a>
                     </li>
                     <li class="list-inline-item">
@@ -55,7 +63,7 @@
                         class="tooltips"
                         href=""
                         data-original-title="Twitter"
-                        >
+                      >
                       </a>
                     </li>
                     <li class="list-inline-item">
@@ -66,15 +74,15 @@
                         class="tooltips"
                         href=""
                         data-original-title="Skype"
-                        >
+                      >
                       </a>
                     </li>
                   </ul>
-                   <button
+                  <button
                     type="button"
                     class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light"
                   >
-                   Edit Profile
+                    Edit Profile
                   </button>
                   <button
                     type="button"
@@ -111,45 +119,48 @@
         </div>
       </div>
     </div>
-  </div> 
- 
+  </div>
 </template>
 <script>
-import axios from 'axios'
+import ProfileImageWithDefault from './ProfileImageWithDefault'
+import axios from "axios";
 export default {
-  name:'ProfileDetail',
-  data(){
-      return {
-        image:'',
-      remoteUrl:''
+  name: "ProfileDetail",
+  data() {
+    return {
+      file:"",
+      message:""
+    };
+  },
+
+  props: ["user"],
+  components:{ProfileImageWithDefault},
+  methods: {
+  onSelect(){
+      const allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
+      const file = this.$refs.file.files[0];
+      this.file = file;
+      if(!allowedTypes.includes(file.type)){
+        this.message = "Filetype is wrong!!"
+      }
+      if(file.size>500000){
+        this.message = 'Too large, max size allowed is 500kb'
       }
     },
-
-  props:['user'],
-  methods:{
-   
-    handleImage(e) {
-      const selectedImage = e.target.files[0]; // get first file
-      this.createBase64Image(selectedImage);
-    },
-    createBase64Image(fileObject) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        this.image = e.target.result;
-        this.uploadImage();
-      };
-      reader.readAsDataURL(fileObject);
-    },
-    uploadImage(){
-      const {image}=this
-      
-      axios.post(`http://localhost:3000/user/${this.$route.params.username}`,{image})
+    async onSubmit(){
+      const formData = new FormData();
+      formData.append('file',this.file);
+      try{
+        await axios.post(`http://localhost:3000/user/${this.$route.params.username}`,formData);
+        this.message = 'Uploaded!!'
+      }
+      catch(err){
+        console.log(err);
+        this.message = err.response.data.error
+      }
     }
-
-    
-  }
- 
-};
+  }, 
+}
 </script>
 <style scoped>
 body {

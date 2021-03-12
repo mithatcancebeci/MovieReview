@@ -9,7 +9,7 @@ const app=express();
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended:false}))
-app.use(bodyParser.json())
+app.use(bodyParser.json({limit:'50mb'}))
 
 require("./mongodb-connection")
 const userRouter=require('./routers/user')
@@ -40,7 +40,17 @@ app.use('/comments',commentRouter)
 // }
 // movies()
 app.use("/images", express.static(path.join("backend/images")));
-
+app.use((err, req, res, next) => {
+    if (err.code === "INCORRECT_FILETYPE") {
+      res.status(422).json({ error: 'Only images are allowed' });
+      return;
+    }
+    if (err.code === "LIMIT_FILE_SIZE") {
+      res.status(422).json({ error: 'Allow file size is 500KB' });
+      return;
+    }
+  });
+  
 app.listen('3000',function(){
     console.log('listening')
 })
