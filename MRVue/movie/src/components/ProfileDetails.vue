@@ -12,7 +12,7 @@
                 <div class="member-card pt-2 pb-2">
                   <br /><br /><br /><br />
                   <div class="thumb-lg member-thumb mx-auto">
-                  <div class="file">
+                  <!-- <div class="file">
    <form @submit.prevent="onSubmit" enctype="multipart/form-data">
       <div class="fields">
         <label>Upload File</label><br/>
@@ -21,22 +21,22 @@
           ref="file"
           @change="onSelect"
         />
-      </div>
-      <div class="fields">
+      </div> -->
+      <!-- <div class="fields">
         <button>Submit</button>
-      </div>
+      </div> -->
       <div class="message">
-        <h5>{{message}}</h5>
+       
       </div>
-   </form>
+   
   </div>
                   </div>
                   <div>
                     
-                    <ProfileImageWithDefault :profileImage=user.image />
+                  <img src="../assets/download.png" width="100" height="100" class="image-fluid">
                     <h4>{{ user.username }}</h4>
                     <h4>{{ user.displayName }}</h4>
-                   
+                 
 
                   </div>
 
@@ -119,10 +119,9 @@
         </div>
       </div>
     </div>
-  </div>
+
 </template>
 <script>
-import ProfileImageWithDefault from './ProfileImageWithDefault'
 import axios from "axios";
 export default {
   name: "ProfileDetail",
@@ -134,7 +133,7 @@ export default {
   },
 
   props: ["user"],
-  components:{ProfileImageWithDefault},
+  components:{},
   methods: {
   onSelect(){
       const allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
