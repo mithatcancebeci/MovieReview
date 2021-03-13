@@ -20,7 +20,7 @@ const getters={
 }
 const mutations={
 setComments(state,data){
-const{comments}=data
+const{username,comments}=data
 state.comments=comments
 },
 setUser(state,data){

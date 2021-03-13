@@ -1,6 +1,6 @@
 const MovieService=require('../services/Movie-Service')
 const express=require('express');
-const { report } = require('./comment');
+const UserService=require('../services/User-Service')
 const router=express.Router();
 
 
@@ -8,6 +8,7 @@ const router=express.Router();
 router.get('/all',MovieService.getMovies);
 router.post('/:id',MovieService.postCommentToMovie)
 router.get('/:id',MovieService.getCommentsOfMovie)
+router.post('/:id',UserService.addFavorite)
    
    
    module.exports=router;

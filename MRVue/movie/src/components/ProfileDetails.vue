@@ -12,32 +12,17 @@
                 <div class="member-card pt-2 pb-2">
                   <br /><br /><br /><br />
                   <div class="thumb-lg member-thumb mx-auto">
-                  <!-- <div class="file">
-   <form @submit.prevent="onSubmit" enctype="multipart/form-data">
-      <div class="fields">
-        <label>Upload File</label><br/>
-        <input 
-          type="file"
-          ref="file"
-          @change="onSelect"
-        />
-      </div> -->
-      <!-- <div class="fields">
-        <button>Submit</button>
-      </div> -->
-      <div class="message">
-       
-      </div>
-   
-  </div>
+                <DefaultImage :profileImage=user.image />
                   </div>
-                  <div>
+                
                     
-                  <img src="../assets/download.png" width="100" height="100" class="image-fluid">
+                   
                     <h4>{{ user.username }}</h4>
                     <h4>{{ user.displayName }}</h4>
-                 
+                   
 
+        <input @change="handleImage" class="custom-input" type="file" accept="image/*">
+      
                   </div>
 
                   <div class="">
@@ -122,43 +107,44 @@
 
 </template>
 <script>
+import DefaultImage from './DefaultImage'
 import axios from "axios";
 export default {
   name: "ProfileDetail",
   data() {
     return {
-      file:"",
-      message:""
+      remoteUrl:"",
+      image:""
     };
   },
 
   props: ["user"],
-  components:{},
+  components:{DefaultImage},
   methods: {
-  onSelect(){
-      const allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
-      const file = this.$refs.file.files[0];
-      this.file = file;
-      if(!allowedTypes.includes(file.type)){
-        this.message = "Filetype is wrong!!"
-      }
-      if(file.size>500000){
-        this.message = 'Too large, max size allowed is 500kb'
-      }
+  handleImage(e) {
+      const selectedImage = e.target.files[0]; // get first file
+      this.createBase64Image(selectedImage);
     },
-    async onSubmit(){
-      const formData = new FormData();
-      formData.append('file',this.file);
-      try{
-        await axios.post(`http://localhost:3000/user/${this.$route.params.username}`,formData);
-        this.message = 'Uploaded!!'
-      }
-      catch(err){
-        console.log(err);
-        this.message = err.response.data.error
-      }
+    createBase64Image(fileObject) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.image = e.target.result;
+        this.uploadImage();
+      };
+      reader.readAsDataURL(fileObject);
+    },
+    uploadImage() {
+      const { image } = this;
+      axios.post(`http://127.0.0.1:3000/user/${this.$route.params.username}`
+      , { image })
+        .then((response) => {
+          this.remoteUrl = response.data.url;
+        })
+        .catch((err) => {
+          return new Error(err.message);
+        })
     }
-  }, 
+  },
 }
 </script>
 <style scoped>

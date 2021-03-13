@@ -5,11 +5,7 @@
       <fieldset>
         <div class="row">
           <div class="col-sm-3 col-lg-2 hidden-xs">
-            <img
-              class="rounded-circle"
-              src="https://bootdey.com/img/Content/avatar/avatar1.png"
-              alt=""
-            />
+          <DefaultImage :profileImage=currentUser.data.image />
           </div>
           <div class="form-group col-xs-12 col-sm-9 col-lg-10">
             <textarea
@@ -29,13 +25,14 @@
   </div>
 </template>
 <script>
+import DefaultImage from '../DefaultImage'
 import axios from "axios";
 export default {
   data() {
     return {
       comment: ""
     };
-  },
+  },components:{DefaultImage},
   computed: {
     currentUser() {
       return JSON.parse(this.$store.state.accounts.initialState.user);
@@ -73,13 +70,7 @@ textarea{
 textarea:focus{
     outline: none;
 }
-img {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  margin-left: 15px;
-  margin-right: 15px;
-}
+
 @media screen {
   .profile {
     min-width: 379px;

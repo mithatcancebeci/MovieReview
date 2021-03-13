@@ -5,11 +5,7 @@
       <fieldset>
         <div class="row">
           <div class="col-sm-3 col-lg-2 hidden-xs">
-            <img
-              class="rounded-circle"
-               :src="'../../../../../public/images/' + this.reply.user.image"
-              alt=""
-            />
+      <DefaultImage :profileImage="this.reply.user.image"/>
           </div>
           <div class="form-group col-xs-12 col-sm-9 col-lg-10"> 
             <p class="card-title"><strong>{{this.reply.user.displayName}}</strong>@<span style="color:smoke">{{this.reply.user.username}}</span></p>
@@ -30,8 +26,10 @@
 
 </template>
 <script>
+import DefaultImage from '../DefaultImage'
 export default {
-  props:['reply']
+  props:['reply'],
+  components:{DefaultImage}
 }
 </script>
 <style scoped>
@@ -54,7 +52,7 @@ fieldset{
   
 }
 
-img {
+.col-sm3>div>img {
   width: 60px;
   height: 60px;
   object-fit: cover;

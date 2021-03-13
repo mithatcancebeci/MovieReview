@@ -53,7 +53,9 @@ exports.login=async(req,res,next)=>{
   });
   await UserModel.findByIdAndUpdate(user._id, { accessToken })
   res.status(200).json({
-    data: { username: user.username},
+    data: { username: user.username,
+            displayName:user.displayName,
+          image:user.image},
     accessToken
   })
 } 
