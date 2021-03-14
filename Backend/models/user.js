@@ -17,6 +17,7 @@ const UserSchema = new mongoose.Schema({
     required: true,
     minlength: 8,
     select:false
+    
   },
   isAuthor: {
     type: Boolean,

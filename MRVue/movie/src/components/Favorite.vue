@@ -1,20 +1,31 @@
 <template>
 <div class="favorite">
-    <div v-for="movie in favorite" :key="movie.id">
+    
    <div class="card" >
    <div class="card-body" >
-  <router-link :to="'/movie/'+movie.id" ><img :src="'https://image.tmdb.org/t/p/w92'+movie.poster_path" :alt="movie.poster_path"></router-link>
+  <img :src="'https://image.tmdb.org/t/p/w92'+movie.poster_path" :alt="movie.poster_path">
         <span class="card-title">{{movie.title}}</span>
-   
+        <button @click="deleteFav">Delete</button>
   </div>
    </div>
    
-    </div></div>
+    </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
+props:[
+  'movie'
+],
 
-props:['favorite']
+methods:{
+  deleteFav(){
+    return axios.delete(`http://localhost:3000/user/${this.$route.params.username}`,{data: {
+    movie:this.movie._id
+  }
+    })
+  }
+}
 }
 </script>
 <style scoped>

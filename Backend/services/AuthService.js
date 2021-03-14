@@ -44,7 +44,7 @@ exports.login=async(req,res,next)=>{
     })
   }
   else{
-   const user = await UserModel.findOne({username});
+   const user = await UserModel.findOne({username}).select('+password');
    if (!user) return next(new Error('Username does not exist'));
    const validPassword=await validatePassword(password,user.password)
    if (!validPassword) return next(new Error('Password is not correct'))

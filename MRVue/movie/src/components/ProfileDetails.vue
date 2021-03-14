@@ -79,8 +79,8 @@
                     <div class="row">
                       <div class="col-4">
                         <div class="mt-3">
-                          <h4>2563</h4>
-                          <p class="mb-0 text-muted">Wallets Balance</p>
+                          <h4>{{user.favorite.length}}</h4>
+                          <p class="mb-0 text-muted">Favorite</p>
                         </div>
                       </div>
                       <div class="col-4">

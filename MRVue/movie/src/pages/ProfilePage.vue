@@ -5,7 +5,7 @@
 <div class="row" >
 <div class="col-4 border-right"><ProfileDetails :user="user" /> </div>
 <div class="col-4 border-right">  <CommentView :user=user /></div>
-<div id="favorite" class="col-4 border-right"><Favorite :favorite=user.favorite /></div>
+<div id="favorite" class="col-4 border-right"><Favorite v-for="movie in user.favorite" :key="movie.id" :movie=movie  /></div>
 </div>
 </div>
 
