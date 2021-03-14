@@ -1,43 +1,38 @@
 <template>
-<div>
-<div class="view" v-for="comment in user.comments" :key=comment.id >
+<div class="view">
     <form>
-      
+
       <fieldset>
         <div class="row">
           <div class="col-sm-3 col-lg-2 hidden-xs">
-      <DefaultImage :profileImage="user.image"/>
+      <DefaultImage :profileImage="this.reply.user.image"/>
           </div>
           <div class="form-group col-xs-12 col-sm-9 col-lg-10"> 
-            <p class="card-title"><strong>{{user.displayName}}</strong>@<span style="color:smoke">{{user.username}}</span></p>
-          
-    <router-link :to="'/movie/'+comment.movie"><p class="card-text">{{comment.content}}</p></router-link>      
-         
+            <p class="card-title"><strong>{{this.reply.user.displayName}}</strong>@<span style="color:smoke">{{this.reply.user.username}}</span></p>
+
+         <p class="card-text">{{this.reply.content}}</p>
+
           </div>
         </div>
       </fieldset>
     </form>
 
-       
-        
-      
+
+
+
 
  
   </div>
-</div>
+
 </template>
 <script>
 import DefaultImage from '../DefaultImage'
 export default {
-  props:['user'],
+  props:['reply'],
   components:{DefaultImage}
 }
 </script>
 <style scoped>
-a{
-  text-decoration: none;
-  color:black
-}
 .view{
   border:1px solid #edededed;
   border-radius:15px;

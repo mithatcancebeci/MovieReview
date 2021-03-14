@@ -9,17 +9,17 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-    <CommentView v-for="reply in comments" :key="reply.id" :reply="reply" />
+    <CommentsOfMovie v-for="reply in comments" :key="reply.id" :reply="reply" />
       </div>
     </div>
   </div>
 </div>
 </template>
 <script>
-import CommentView from './Comments/CommentView'
+import CommentsOfMovie from './Comments/CommentsOfMovie'
 import CommentSubmit from './Comments/CommentSubmit'
 export default {
-    components:{CommentView,CommentSubmit},
+    components:{CommentsOfMovie,CommentSubmit},
     props:['comments'],
     computed:{
         loggedIn() {
