@@ -19,8 +19,11 @@ const MovieSchema = new mongoose.Schema({
     type: mongoose.SchemaTypes.ObjectId,
   },
   image:{
-    data:Buffer,
-    contentType:String
+   type:String,
+  },
+  owner_Favorite:{
+    ref:"User",
+    type:mongoose.SchemaTypes.ObjectId
   },
   comments: [
     {

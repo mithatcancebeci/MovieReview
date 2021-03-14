@@ -110,7 +110,9 @@ export default {
     },
     postFavorite(){
       
-      return axios.post(`http://localhost:3000/movie/${this.$route.params.id}`,{username:this.currentUser.data.username})
+      return axios.post(`http://localhost:3000/movie`,{
+        movieId:this.movieDetails.id,
+        username:this.currentUser.data.username})
     }
   },
   props: ["movieDetails", "movieVideos", "movieCredits"],

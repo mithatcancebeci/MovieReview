@@ -5,12 +5,12 @@
       <fieldset>
         <div class="row">
           <div class="col-sm-3 col-lg-2 hidden-xs">
-      <DefaultImage :profileImage="this.reply.user.image"/>
+      <DefaultImage :profileImage="this.reply.image"/>
           </div>
           <div class="form-group col-xs-12 col-sm-9 col-lg-10"> 
-            <p class="card-title"><strong>{{this.reply.user.displayName}}</strong>@<span style="color:smoke">{{this.reply.user.username}}</span></p>
+            <p class="card-title"><strong>{{this.reply.displayName}}</strong>@<span style="color:smoke">{{this.reply.username}}</span></p>
           
-         <p class="card-text">{{this.reply.content}}</p>
+         <p class="card-text">{{this.reply.comments.content}}</p>
          
           </div>
         </div>

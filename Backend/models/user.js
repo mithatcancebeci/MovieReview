@@ -16,6 +16,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 8,
+    select:false
   },
   isAuthor: {
     type: Boolean,
@@ -31,7 +32,12 @@ const UserSchema = new mongoose.Schema({
       ref: "Movie",
     },
   ],
-  favorite: [],
+  favorite: [
+    {
+      type:mongoose.SchemaTypes.ObjectId,
+      ref:"Movie"
+    }
+  ],
   comments: [
     {
       type: mongoose.SchemaTypes.ObjectId,

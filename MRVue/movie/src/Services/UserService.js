@@ -6,5 +6,9 @@ export default{
     getUserOfComments(username){
         return axios.get(`http://localhost:3000/user/comments/${username}`)
     }
-    
+    ,
+    getFavorites(username){
+        return axios.get(`http://localhost:3000/user/bookmarks/${username}`)
+
+    }
 }
