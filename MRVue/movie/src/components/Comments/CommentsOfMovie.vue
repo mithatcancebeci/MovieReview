@@ -8,8 +8,8 @@
       <DefaultImage :profileImage="this.reply.user.image"/>
           </div>
           <div class="form-group col-xs-12 col-sm-9 col-lg-10"> 
-            <p class="card-title"><strong>{{this.reply.user.displayName}}</strong>@<span style="color:smoke">{{this.reply.user.username}}</span></p>
-
+ <router-link :to="'/user/'+this.reply.user.username">           <p class="card-title"><strong>{{this.reply.user.displayName}}</strong>@<span style="color:smoke">{{this.reply.user.username}}</span></p>
+</router-link> 
          <p class="card-text">{{this.reply.content}}</p>
 
           </div>
@@ -33,6 +33,10 @@ export default {
 }
 </script>
 <style scoped>
+a{
+  text-decoration: none;
+  color:inherit
+}
 .view{
   border:1px solid #edededed;
   border-radius:15px;
