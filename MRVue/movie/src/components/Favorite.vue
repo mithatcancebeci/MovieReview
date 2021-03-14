@@ -5,7 +5,8 @@
    <div class="card-body" >
   <img :src="'https://image.tmdb.org/t/p/w92'+movie.poster_path" :alt="movie.poster_path">
         <span class="card-title">{{movie.title}}</span>
-        <button @click="deleteFav">Delete</button>
+        <div><button class="del" @click="deleteFav"><Delete /></button></div>
+      
   </div>
    </div>
    
@@ -13,11 +14,12 @@
 </template>
 <script>
 import axios from 'axios'
+import Delete from './icons/Delete'
 export default {
 props:[
   'movie'
 ],
-
+components:{Delete},
 methods:{
   deleteFav(){
     return axios.delete(`http://localhost:3000/user/${this.$route.params.username}`,{data: {
@@ -29,8 +31,12 @@ methods:{
 }
 </script>
 <style scoped>
+.del{
+  text-align: center;
+  background-color: white;
+  border:none}
 .favorite{
-  display:flex;
+  display:inline-flex;
   flex-wrap:wrap;
 }
 .card{
@@ -46,8 +52,10 @@ img{
   font-size:12px;
   font-weight: 700;
   color:#f42f42;
-  text-align: center;
   
+}
+.card-body{
+  text-align: center;
 }
 
 </style>

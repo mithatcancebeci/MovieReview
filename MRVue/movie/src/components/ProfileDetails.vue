@@ -14,17 +14,17 @@
                   <div class="thumb-lg member-thumb mx-auto">
                 <DefaultImage :profileImage=user.image />
                   </div>
-                
-                    
-                   
-                    <h4>{{ user.username }}</h4>
+                      <h4>{{ user.username }}</h4>
                     <h4>{{ user.displayName }}</h4>
+                     <label for="upload"><Share /></label>
                    
-
-        <input @change="handleImage" class="custom-input" type="file" accept="image/*">
+              
+                   
+       
+     
       
                   </div>
-
+   <input @change="handleImage" class="custom-input" id="upload" type="file" accept="image/*">
                   <div class="">
                     <p class="text-muted"><span> </span><span></span></p>
                   </div>
@@ -108,6 +108,7 @@
 </template>
 <script>
 import DefaultImage from './DefaultImage'
+import Share from './icons/Share'
 import axios from "axios";
 export default {
   name: "ProfileDetail",
@@ -119,7 +120,7 @@ export default {
   },
 
   props: ["user"],
-  components:{DefaultImage},
+  components:{DefaultImage,Share},
   methods: {
   handleImage(e) {
       const selectedImage = e.target.files[0]; // get first file
@@ -148,6 +149,10 @@ export default {
 }
 </script>
 <style scoped>
+#upload{
+  opacity:0;
+  z-index: 1;
+}
 body {
   background: #dcdcdc;
   margin-top: 20px;
