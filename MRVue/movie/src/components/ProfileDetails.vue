@@ -63,12 +63,15 @@
                       </a>
                     </li>
                   </ul>
+                  <router-link v-if="this.ownerLoggedIn"  to="/">
                   <button
                     type="button"
                     class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light"
+
+                    @click="deleteUser"
                   >
-                    Edit Profile
-                  </button>
+                    Delete Profile
+                  </button></router-link>
                   <button
                     type="button"
                     class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light"
@@ -112,14 +115,7 @@ import Share from './icons/Share'
 import axios from "axios";
 export default {
   name: "ProfileDetail",
-  data() {
-    return {
-      remoteUrl:"",
-      image:""
-    };
-  },
-
-  props: ["user"],
+  props: ["user","ownerLoggedIn"],
   components:{DefaultImage,Share},
   methods: {
   handleImage(e) {
@@ -144,8 +140,15 @@ export default {
         .catch((err) => {
           return new Error(err.message);
         })
+    },deleteUser(){
+      axios.delete(`http://localhost:3000/user/delete/${this.$route.params.username}`)
+       
+      return this.$store.dispatch('logout')
+
+    },goBack() {
+      this.$router.push({ name: 'HomePage' });
     }
-  },
+  }
 }
 </script>
 <style scoped>
