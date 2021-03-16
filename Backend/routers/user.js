@@ -11,4 +11,5 @@ router.delete('/comment/:username',UserService.removeComment)
 router.delete('/delete/:username',UserService.deleteUser)
 router.post('/movie/:username',UserService.addMovie)
 router.get('/myMovie/:username',UserService.getMyMovies)
+router.delete('/myMovie/:username',UserService.deleteMyMovie)
 module.exports=router;

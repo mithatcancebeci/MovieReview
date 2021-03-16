@@ -72,11 +72,12 @@
                   >
                   X Delete Profile
                   </button></router-link>
-                  <router-link :to="'/user/addMovie/'+user.username"
+                  <router-link v-if="this.ownerLoggedIn" :to="'/user/addMovie/'+user.username"
                     type="button"
+                    id="addMovie"
                     class="btn  mt-3 btn-rounded waves-effect w-md waves-light"
                   >
-                   <AddMovie />
+                   Add Movie
                   </router-link>
                   <div class="mt-4">
                     <div class="row">
@@ -164,6 +165,11 @@ export default {
 }
 </script>
 <style scoped>
+#addMovie{
+  background-color: #f42f42;
+  color:white;
+  font-weight: 700;
+}
 #myMovies{
   margin-top:12px;
 }

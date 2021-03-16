@@ -18,7 +18,13 @@ exports.getUser = async (req, res) => {
   }
 };
 exports.deleteUser = async (req,res)=>{
+  try {
   await UserModel.deleteOne({username:req.params.username})
+  res.json({success:true})
+  } catch (e) {
+  res.json({success:false})
+  }
+  
 }
 
 exports.uploadImage = (req, res) => {
@@ -65,7 +71,13 @@ exports.removeFavorite=async(req,res)=>{
  })
 }
 exports.removeComment = async (req, res) => {
-  await CommentModel.deleteOne({_id:req.body.commentId})  
+  try {
+   await CommentModel.deleteOne({_id:req.body.commentId}) 
+   res.json({success:true})
+  } catch (e) {
+  res.json({success:false})
+  }
+  
 }
 exports.addMovie=async(req,res)=>{
   const {body,image}=req.body;
@@ -89,5 +101,15 @@ exports.getMyMovies=async(req,res)=>{
 await UserModel.findOne({username:req.params.username}).populate({path:"movies",select:["title","poster_path","overview"] }).then((movies)=>{
   res.json(movies)
 })
+
+}
+exports.deleteMyMovie=async(req,res)=>{
+  try {
+   await myMovieModel.deleteOne({_id:req.body.movieId})
+   res.json({success:true})
+  } catch (e) {
+    res.json({success:false})
+  
+  }
 
 }

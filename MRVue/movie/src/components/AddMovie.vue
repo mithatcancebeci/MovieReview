@@ -1,11 +1,7 @@
 <template>
   <div class="addMovie">
  
-  <div>
-      <b-button id="toggle-btn" @click="toggleModal">+ Add Movie</b-button>
-
-    <b-modal ref="my-modal" hide-footer title="Create Movie">
-     <div>
+     <div v-if="this.ownerLoggedIn">
       <form class="form">
       <input type="text" v-model="title" />
       <input type="text" v-model="overview" />
@@ -14,13 +10,11 @@
      <input @change="handleImage" class="custom-input" id="upload" type="file" accept="image/*">
     </form>
     </div>
-      <b-button class="mt-3" variant="outline-danger"  @click="hideModal">Close Me</b-button>
-      <b-button class="mt-3" variant="outline-warning"  @click="toggleModal">Toggle Me</b-button>
-    </b-modal>
+     
   </div>
 
   
-  </div>
+ 
 </template>
 <script>
 import axios from 'axios'
@@ -30,20 +24,13 @@ export default {
     return {
       title: "",
       overview: "",
+      ownerLoggedIn:''
     };
   },
   components:{Share}
   ,
   methods: {
   
-      hideModal() {
-        this.$refs['my-modal'].hide()
-      },
-      toggleModal() {
-        // We pass the ID of the button that we want to return focus to
-        // when the modal has hidden
-        this.$refs['my-modal'].toggle('#toggle-btn')
-      },
     handleImage(e) {
       const selectedImage = e.target.files[0]; 
       this.createBase64Image(selectedImage);
@@ -70,7 +57,23 @@ export default {
           return new Error(err.message);
         });
     },
-  },
+  }, computed:{
+        user(){
+            return this.$store.state.users.user
+        },currentUser() {
+      return JSON.parse(this.$store.state.accounts.initialState.user);
+    },
+      
+    }
+    
+    ,created(){
+        this.$store.dispatch('getUser',this.$route.params.username)
+        this.currentUser.data.username === this.$route.params.username
+      ? (this.ownerLoggedIn = true)
+      : (this.ownerLoggedIn = false);
+    
+    }
+
 };
 </script>
 <style scoped>
