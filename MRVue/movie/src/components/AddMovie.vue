@@ -1,14 +1,40 @@
 <template>
-  <div class="align-center">
+  <div class="text-center">
  
-     <div class="" v-if="this.ownerLoggedIn">
-      <form class="form">
-      <input type="text" v-model="title" placeholder="title"/>
-      <input type="text" v-model="overview" placeholder="overview" />
-      <label for="upload"><Share /></label>
-      <button @click="uploadImage">Save Movie</button>
-     <input @change="handleImage" class="custom-input" id="upload" type="file" accept="image/*">
-    </form>
+     <div class="container" v-if="this.ownerLoggedIn">
+       <form>
+  <div class="form-group row">
+    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Title</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="title" v-model="title">
+    </div>
+  </div>
+   <div class="form-group row">
+    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Overview</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Overview" v-model="overview">
+    </div>
+  </div>
+  
+     <div class="form-group row">
+    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Poster</label>
+      
+    <div class="col-sm-1">  <label for="upload"><Share /></label>
+ 
+    </div>
+  </div>
+       <div class="form-group row">
+      
+    <div class="col-sm-5">  
+  <button @click="uploadImage">Save Movie</button> 
+    </div>
+  </div>
+  </form>
+     
+  
+            
+ <input @change="handleImage" class="custom-input" id="upload" type="file" accept="image/*">
+    
     </div>
      
   </div>
@@ -77,10 +103,14 @@ export default {
 };
 </script>
 <style scoped>
+.container{
+  display: block;
+}
 input{
  border:1px solid #f42f42;
  border-radius:15px;
  box-shadow: #f42f42;
+ width:30%;
 }
 input:focus{
   outline: none;
@@ -95,6 +125,10 @@ input:focus{
 .form {
     display:block
     
+}
+.text-center{
+  margin-top:100px;
+  margin-left:50px;
 }
 #upload{
     display:none}
