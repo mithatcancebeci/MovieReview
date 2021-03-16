@@ -40,7 +40,7 @@ export default {
 img{
     width:100%;
     height:100%;
-    border-radius:5px;
+    border-radius:15px;
     
 }
 #toggle-btn{
