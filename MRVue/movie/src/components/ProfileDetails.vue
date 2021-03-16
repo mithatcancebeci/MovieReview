@@ -96,7 +96,7 @@
                       <div class="col-4">
                         <div id="myMovies">
                           <h4>{{myMovies.movies.length}}</h4>
-                          <p class="mb-0 text-muted"><MyMovies :myMovies="myMovies.movies"/></p>
+                          <p class="mb-0 text-muted"><MyMovies :myMovies="myMovies.movies" :ownerLoggedIn="this.ownerLoggedIn" /></p>
                         </div>
                       </div>
                     </div>

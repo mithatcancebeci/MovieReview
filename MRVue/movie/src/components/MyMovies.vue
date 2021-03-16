@@ -9,6 +9,7 @@
             v-for="movie in $attrs.myMovies"
             :key="movie.id"
             :movie="movie"
+            :ownerLoggedIn="ownerLoggedIn"
           />
        </div>
             </b-modal>
@@ -28,8 +29,10 @@ export default {
           type: Array,
           required: true,
         },
-      ],
-    },
+       
+      ], 
+        
+    },'ownerLoggedIn'
   ],
   methods: {
     hideModal() {

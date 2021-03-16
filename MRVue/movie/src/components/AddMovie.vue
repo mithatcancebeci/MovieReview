@@ -1,10 +1,10 @@
 <template>
-  <div class="addMovie">
+  <div class="align-center">
  
-     <div v-if="this.ownerLoggedIn">
+     <div class="" v-if="this.ownerLoggedIn">
       <form class="form">
-      <input type="text" v-model="title" />
-      <input type="text" v-model="overview" />
+      <input type="text" v-model="title" placeholder="title"/>
+      <input type="text" v-model="overview" placeholder="overview" />
       <label for="upload"><Share /></label>
       <button @click="uploadImage">Save Movie</button>
      <input @change="handleImage" class="custom-input" id="upload" type="file" accept="image/*">
@@ -77,6 +77,14 @@ export default {
 };
 </script>
 <style scoped>
+input{
+ border:1px solid #f42f42;
+ border-radius:15px;
+ box-shadow: #f42f42;
+}
+input:focus{
+  outline: none;
+}
 #toggle-btn{
     border:none;
     background-color:#f42f42;
