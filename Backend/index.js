@@ -36,7 +36,7 @@ app.use('/',authRouter)
 //  }
 // addMovies()
 // const movies=()=>{
-//     const movie=axios.get('https://api.themoviedb.org/3/movie/527774?api_key=63c20ab0688ef19ee1cdf0eacf135738&language=en-US').then((res)=>{console.log(res.data)})
+//     const movie=axios.get('https://api.themoviedb.org/3/movie/527774?api_key=<api_key>&language=en-US').then((res)=>{console.log(res.data)})
 //     console.log(movie)
 // }
 // movies()
